@@ -36,7 +36,9 @@ class MDChain {
   }
 
   addParagraph(text: string) {
-    let t = `${text}\n`;
+    let t = `${text}`;
+    t = t.replaceAll("\n", "  \n");
+    t += "  \n";
     this.appendToMD(t);
     return this;
   }
