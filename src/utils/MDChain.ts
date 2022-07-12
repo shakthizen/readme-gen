@@ -30,7 +30,7 @@ class MDChain {
         t = "#";
         break;
     }
-    t += ` ${title}\n`;
+    t += ` ${title}  \n\n`;
     this.appendToMD(t);
     return this;
   }
@@ -38,7 +38,7 @@ class MDChain {
   addParagraph(text: string) {
     let t = `${text}`;
     t = t.replaceAll("\n", "  \n");
-    t += "  \n";
+    t += "  \n\n";
     this.appendToMD(t);
     return this;
   }
@@ -76,7 +76,7 @@ class MDChain {
   addBlockquote(text: string) {
     let t = `> ${text}`;
     t = t.replaceAll("\n", "  \n> ");
-    t += "  \n";
+    t += "  \n\n";
     this.appendToMD(t);
     return this;
   }
@@ -88,7 +88,7 @@ class MDChain {
   }
 
   addCodeBlock(text: string, language?: string) {
-    let t = `\`\`\`${language || ""}\n${text}\n\`\`\`  \n`;
+    let t = `\`\`\`${language || ""}\n${text}\n\`\`\`  \n\n`;
     this.appendToMD(t);
     return this;
   }
