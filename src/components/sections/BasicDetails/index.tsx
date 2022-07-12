@@ -4,6 +4,8 @@ import { Stack, TextField } from "@mui/material";
 
 import Section from "../Section";
 
+import MDChain from "../../../utils/MDChain";
+
 import { TSection } from "../types";
 
 type Props = {};
@@ -17,8 +19,13 @@ const BasicDetails = ({ onChange = () => {} }: TSection & Props) => {
   );
 
   useEffect(() => {
-    onChange(`## ${projectName}  \n${description}`);
+    let md = new MDChain()
+      .addTitle(projectName || "", "h2")
+      .addParagraph(description || "")
+      .render();
+    onChange(md);
   }, [projectName, description]);
+
   return (
     <Section title="Basic Details" checked disabled>
       <Stack spacing={2}>

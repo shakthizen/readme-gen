@@ -5,6 +5,8 @@ import { Stack } from "@mui/material";
 import Section from "../Section";
 import CheckBoxWithLabel from "../../Controls/CheckBoxWithLabel";
 
+import MDChain from "../../../utils/MDChain";
+
 import { TSection } from "../types";
 
 type Props = {};
@@ -17,10 +19,20 @@ const ViteProject = ({ onChange = () => {} }: TSection & Props) => {
 
   useEffect(() => {
     if (checked) {
-      let text = `### Vite Project Guide\n`;
-      if (isRun) text += `#### Run development server\n\`yarn dev\``;
+      let text = new MDChain().addTitle("Vite Project Guide", "h3");
 
-      onChange(text);
+      if (isRun)
+        text
+          .addTitle("Run Development Server", "h4")
+          .addCodeBlock("yarn dev", "sh");
+      if (isBuild)
+        text.addTitle("Build Project", "h4").addCodeBlock("yarn build", "sh");
+      if (isPreview)
+        text
+          .addTitle("Preview Project", "h4")
+          .addCodeBlock("yarn preview", "sh");
+
+      onChange(text.render());
     } else {
       onChange("");
     }
