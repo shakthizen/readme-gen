@@ -111,6 +111,17 @@ class MDChain {
     return this;
   }
 
+  addLink(url: string, text?: string) {
+    let t = "";
+    if (text) {
+      t = `[${text}](${url})`;
+    } else {
+      t = `<${url}>`;
+    }
+    this.appendToMD(t);
+    return this;
+  }
+
   clear() {
     this.md = "";
     return this;
