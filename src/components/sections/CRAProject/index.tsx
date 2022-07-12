@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 
 import { Stack } from "@mui/material";
 
-import Section from "../Section";
+import SectionContainer from "../SectionContainer";
 import CheckBoxWithLabel from "../../Controls/CheckBoxWithLabel";
 
 import MDChain from "../../../utils/MDChain";
@@ -76,7 +76,11 @@ const CRAProject = ({ onChange = () => {} }: TSection & Props) => {
   }, [checked, isStart, isBuild, isTest, isEject]);
 
   return (
-    <Section title="CRA Project Guide" checked={checked} onChange={setChecked}>
+    <SectionContainer
+      title="CRA Project Guide"
+      checked={checked}
+      onChange={setChecked}
+    >
       <Stack spacing={2}>
         <CheckBoxWithLabel
           label="Run Development Server"
@@ -99,7 +103,7 @@ const CRAProject = ({ onChange = () => {} }: TSection & Props) => {
           onChange={setIsEject}
         />
       </Stack>
-    </Section>
+    </SectionContainer>
   );
 };
 

@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 
 import { Stack } from "@mui/material";
 
-import Section from "../Section";
+import SectionContainer from "../SectionContainer";
 import CheckBoxWithLabel from "../../Controls/CheckBoxWithLabel";
 
 import MDChain from "../../../utils/MDChain";
@@ -58,7 +58,11 @@ const ViteProject = ({ onChange = () => {} }: TSection & Props) => {
   }, [checked, isDev, isBuild, isPreview]);
 
   return (
-    <Section title="Vite Project Guide" checked={checked} onChange={setChecked}>
+    <SectionContainer
+      title="Vite Project Guide"
+      checked={checked}
+      onChange={setChecked}
+    >
       <Stack spacing={2}>
         <CheckBoxWithLabel
           label="Run Development Server"
@@ -76,7 +80,7 @@ const ViteProject = ({ onChange = () => {} }: TSection & Props) => {
           onChange={setIsPreview}
         />
       </Stack>
-    </Section>
+    </SectionContainer>
   );
 };
 

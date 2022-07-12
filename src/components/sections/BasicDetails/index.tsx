@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 
 import { Stack, TextField } from "@mui/material";
 
-import Section from "../Section";
+import SectionContainer from "../SectionContainer";
 
 import MDChain from "../../../utils/MDChain";
 
@@ -27,7 +27,7 @@ const BasicDetails = ({ onChange = () => {} }: TSection & Props) => {
   }, [projectName, description]);
 
   return (
-    <Section title="Basic Details" checked disabled>
+    <SectionContainer title="Basic Details" checked disabled>
       <Stack spacing={2}>
         <TextField
           label="Project Name"
@@ -42,7 +42,7 @@ const BasicDetails = ({ onChange = () => {} }: TSection & Props) => {
           onChange={(v) => setDescription(v.target.value)}
         />
       </Stack>
-    </Section>
+    </SectionContainer>
   );
 };
 

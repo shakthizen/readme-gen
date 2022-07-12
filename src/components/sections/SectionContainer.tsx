@@ -10,7 +10,7 @@ type Props = {
   children?: React.ReactNode;
 };
 
-const Section = ({
+const SectionContainer = ({
   title,
   disabled = false,
   checked = false,
@@ -28,9 +28,11 @@ const Section = ({
         <Typography variant="h6">{title}</Typography>
         <Switch {...{ checked, disabled }} onChange={(e, c) => onChange(c)} />
       </Stack>
-      <CardContent>{children}</CardContent>
+      <CardContent sx={{ display: checked ? "flex" : "none" }}>
+        {children}
+      </CardContent>
     </Card>
   );
 };
 
-export default Section;
+export default SectionContainer;
