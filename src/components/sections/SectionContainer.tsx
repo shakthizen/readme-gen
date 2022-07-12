@@ -28,9 +28,7 @@ const SectionContainer = ({
         <Typography variant="h6">{title}</Typography>
         <Switch {...{ checked, disabled }} onChange={(e, c) => onChange(c)} />
       </Stack>
-      <CardContent sx={{ display: checked ? "flex" : "none" }}>
-        {children}
-      </CardContent>
+      {checked && <CardContent>{children}</CardContent>}
     </Card>
   );
 };
