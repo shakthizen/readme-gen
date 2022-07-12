@@ -58,11 +58,7 @@ const FooterSection = ({ onChange = () => {} }: TSection & Props) => {
   ]);
 
   return (
-    <SectionContainer
-      title="Vite Project Guide"
-      checked={checked}
-      onChange={setChecked}
-    >
+    <SectionContainer title="Footer" checked={checked} onChange={setChecked}>
       <Stack spacing={2}>
         <TextField
           value={companyName}

@@ -34,7 +34,7 @@ const PreviewPage = (props: Props) => {
   }, [MDValue]);
 
   return (
-    <Stack flex={1}>
+    <Stack p={1} flex={1}>
       <MDEditor
         value={MDValue}
         onChange={setMDValue}
