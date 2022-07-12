@@ -12,39 +12,58 @@ import { TSection } from "../types";
 type Props = {};
 
 const ViteProject = ({ onChange = () => {} }: TSection & Props) => {
-  const [checked, setChecked] = useState(false);
-  const [isRun, setIsRun] = useState(true);
+  const [checked, setChecked] = useState(true);
+  const [isDev, setIsDev] = useState(true);
   const [isBuild, setIsBuild] = useState(true);
   const [isPreview, setIsPreview] = useState(true);
 
   useEffect(() => {
     if (checked) {
-      let text = new MDChain().addTitle("Vite Project Guide", "h3");
+      let text = new MDChain()
+        .addTitle("Vite Project Guide", "h3")
+        .addParagraph("Project bootstrapped using Vite");
 
-      if (isRun)
+      if (isDev)
         text
           .addTitle("Run Development Server", "h4")
+          .addText("Runs local development server on ")
+          .addLink("localhost:3000")
+          .addLineBreak()
           .addCodeBlock("yarn dev", "sh");
       if (isBuild)
-        text.addTitle("Build Project", "h4").addCodeBlock("yarn build", "sh");
+        text
+          .addTitle("Build Project", "h4")
+          .addParagraph("Build for production")
+          .addBlockquote("Files can be located in /dist directory")
+          .addCodeBlock("yarn build", "sh");
       if (isPreview)
         text
           .addTitle("Preview Project", "h4")
+          .addParagraph(
+            "Runs a local server and preview locally build project."
+          )
+          .addBlockquote(
+            new MDChain()
+              .addText("Must be built using ")
+              .addCode("yarn build")
+              .addText(" beforehand.")
+              .render()
+          )
           .addCodeBlock("yarn preview", "sh");
 
       onChange(text.render());
     } else {
       onChange("");
     }
-  }, [checked, isRun, isBuild, isPreview]);
+  }, [checked, isDev, isBuild, isPreview]);
 
   return (
     <Section title="Vite Project Guide" checked={checked} onChange={setChecked}>
       <Stack spacing={2}>
         <CheckBoxWithLabel
           label="Run Development Server"
-          checked={isRun}
-          onChange={setIsRun}
+          checked={isDev}
+          onChange={setIsDev}
         />
         <CheckBoxWithLabel
           label="Build Project"
