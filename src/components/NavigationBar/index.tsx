@@ -5,7 +5,7 @@ import { AppBar, Stack, Toolbar } from "@mui/material";
 import Logo from "../../images/logo.jpg";
 
 type Props = {
-  actions?: React.ReactNode[];
+  actions?: React.ReactNode;
 };
 
 const NavigationBar = ({ actions }: Props) => {
