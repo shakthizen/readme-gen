@@ -18,9 +18,8 @@ const CheckBoxWithLabel = ({
       direction={"row"}
       alignItems={"center"}
       justifyContent={"space-between"}
-      p={2}
     >
-      <Typography variant="h6">{label}</Typography>
+      <Typography variant="button">{label}</Typography>
       <Checkbox {...{ checked }} onChange={(e, c) => onChange(c)} />
     </Stack>
   );
